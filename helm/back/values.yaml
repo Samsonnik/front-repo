@@ -1,0 +1,24 @@
+image:
+  repository: cr.yandex/crp8nsgoqk70ro4v6c1p/back
+  tag: "01"
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: "yc-registry-key"
+
+service:
+  port: 8081
+
+envSecrets:
+  POSTGRES_HOST:      "rc1a-vv6llmfjh7t4odab.mdb.yandexcloud.net"
+  POSTGRES_PORT:      "6432"
+  POSTGRES_USER:      "java_user"
+  POSTGRES_PASSWORD:  "java-Java"
+  POSTGRES_DB:        "java_db"
+  REDIS_HOST:         "fhmoimgjrf911oh7915c.auto.internal"
+  REDIS_PORT:         "6379"
+  REDIS_PASSWORD:     "redis"
+  FLUENTD_ENABLED:    "false"
+  FLUENTD_HOST:       "fluentd-aggregator.logging.svc.cluster.local"
+  FLUENTD_PORT:       "24224"
+  SERVER_PORT:        "8081"
+  DEBUG:              "true"
