@@ -1,5 +1,7 @@
 pipeline {
-    agent kubernetes
+    agent {
+        label 'my-jenkins-jenkins-agent'
+    }
 
     triggers {
         githubPush() 
@@ -8,7 +10,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                kubectl get nodes
+                 container('kubectl') {
+                    sh 'kubectl get nodes'
+                }
             }
         }
     }
