@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        label 'my-jenkins-jenkins-agent'
-    }
+    agent any
 
     triggers {
         githubPush() 
