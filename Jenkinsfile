@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'jnlp'
+        label 'default'
     }
 
     triggers {
