@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent kubernetes
 
     triggers {
         githubPush() 
@@ -8,8 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Сборка запущена по вебхуку!'
-                sh 'echo "Текущая ветка: $BRANCH_NAME"'
+                kubectl get nodes
             }
         }
     }
