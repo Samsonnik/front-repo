@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'my-jenkins-jenkins-agent'
+        label 'jnlp'
     }
 
     triggers {
