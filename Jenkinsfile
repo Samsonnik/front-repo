@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'default'
+        label 'my-jenkins-jenkins-agent'
     }
 
     triggers {
