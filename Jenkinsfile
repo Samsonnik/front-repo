@@ -13,7 +13,7 @@ pipeline {
         stage('Build') {
             steps {
                  container('helm') {
-                    sh 'ls
+                    sh 'ls'
                 }
             }
         }
