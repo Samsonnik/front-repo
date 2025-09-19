@@ -14,8 +14,6 @@ spec:
       labels:
         app: {{ .Release.Name }}-front
     spec:
-      imagePullSecrets:
-        - name: {{ .Values.imagePullSecrets | quote }}
       containers:
         - name: front
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
