@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        kubernetes {
+            label 'my-jenkins-jenkins-agent'
+        }
+    }
 
     triggers {
         githubPush() 
