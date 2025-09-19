@@ -13,7 +13,7 @@ pipeline {
         stage('Build') {
             steps {
                  container('jnlp') {
-                    sh 'kubectl get nodes'
+                    sh 'helm repo list'
                 }
             }
         }
