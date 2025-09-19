@@ -13,7 +13,7 @@ pipeline {
         stage('Build') {
             steps {
                  container('helm') {
-                    sh 'ls'
+                    sh 'helm install --upgrade front ./helm/front -f ./helm/front/values.yaml -n front'
                 }
             }
         }

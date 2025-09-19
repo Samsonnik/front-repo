@@ -1,13 +1,13 @@
 image:
-  repository: cr.yandex/crp8nsgoqk70ro4v6c1p/front
-  tag: "01"
+  repository: nginx 
+  tag: "latest"
   pullPolicy: IfNotPresent
-imagePullSecrets: "yc-registry-key"
 service:
-  port: 443
+  port: 80
 ingress:
   enabled: true
   className: "nginx"
+  host: "test-api"
   annotations:
     kubernetes.io/ingress.class: "nginx"
   path: "/"
