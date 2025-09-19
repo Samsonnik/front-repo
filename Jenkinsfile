@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                 container('jnlp') {
+                 container('helm') {
                     sh 'helm repo list'
                 }
             }
