@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                 container('kubectl') {
+                 container('jnlp') {
                     sh 'kubectl get nodes'
                 }
             }
