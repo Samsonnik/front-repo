@@ -13,7 +13,8 @@ pipeline {
         stage('Build') {
             steps {
                  container('helm') {
-                    sh 'helm repo list'
+                    sh 'cd helm/front'
+                    sh 'helm install back ./ -n default'
                 }
             }
         }
