@@ -12,13 +12,20 @@ pipeline {
         DOCKER_FILE_FILES = './java-app-main/front/'
         DEPLOY_CHART_NAME = 'front-chart'
         DEPLOY_NS = 'front'
+        CRED_ID = 'eb4b7a94-1a75-4571-87e0-7d2303525122'
     }
 
     stages {
         stage('Build') {
             steps {
                 container('podman') {
-                    sh 'podman build -f $DOCKER_FILE_PATH -t $IMAGE_NAME:$IMAGE_VER $DOCKER_FILE_FILES'
+                    withCredentials([usernamePassword(
+                        credentialsId: 'dockerhub-password', 
+                        usernameVariable: 'DOCKER_USER',
+                        passwordVariable: 'DOCKER_PASS')]) {
+                            sh 'echo "$DOCKER_PASS" | podman login docker.io -u "$DOCKER_USER" --password-stdin'
+                            sh 'podman build -f $DOCKER_FILE_PATH -t $IMAGE_NAME:$IMAGE_VER $DOCKER_FILE_FILES'
+                    }
                 }
             }
         }
