@@ -20,11 +20,14 @@ pipeline {
             steps {
                 container('podman') {
                     withCredentials([usernamePassword(
-                        credentialsId: 'eb4b7a94-1a75-4571-87e0-7d2303525122', 
+                        credentialsId: $CRED_ID, 
                         usernameVariable: 'DOCKER_USER',
                         passwordVariable: 'DOCKER_PASS')]) {
-                            sh 'echo "$DOCKER_PASS" | podman login docker.io -u "$DOCKER_USER" --password-stdin'
-                            sh 'podman build -f $DOCKER_FILE_PATH -t $IMAGE_NAME:$IMAGE_VER $DOCKER_FILE_FILES'
+                            sh '''
+                            echo "$DOCKER_PASS" | podman login docker.io -u "$DOCKER_USER" --password-stdin
+                            podman build -f $DOCKER_FILE_PATH -t $IMAGE_NAME:$IMAGE_VER $DOCKER_FILE_FILES
+                            podman push $IMAGE_NAME:$IMAGE_VER
+                            '''
                     }
                 }
             }
