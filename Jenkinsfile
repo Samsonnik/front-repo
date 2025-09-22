@@ -20,7 +20,7 @@ pipeline {
             steps {
                 container('podman') {
                     withCredentials([usernamePassword(
-                        credentialsId: $CRED_ID, 
+                        credentialsId: env.CRED_ID, 
                         usernameVariable: 'DOCKER_USER',
                         passwordVariable: 'DOCKER_PASS')]) {
                             sh '''
