@@ -26,7 +26,7 @@ pipeline {
                             sh '''
                             echo "$DOCKER_PASS" | podman login docker.io -u "$DOCKER_USER" --password-stdin
                             podman build -f $DOCKER_FILE_PATH -t $IMAGE_NAME:$IMAGE_VER $DOCKER_FILE_FILES
-                            podman tag $DOCKER_USER/$IMAGE_NAME:$IMAGE_VER
+                            podman tag $IMAGE_NAME:$IMAGE_VER $DOCKER_USER/$IMAGE_NAME:$IMAGE_VER
                             podman push $DOCKER_USER/$IMAGE_NAME:$IMAGE_VER
                             '''
                     }
